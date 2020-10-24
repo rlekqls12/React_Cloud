@@ -1,0 +1,24 @@
+.Router_sideBar {
+    z-index: 0;
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    overflow-x: hidden;
+    background-color: #dfdfdf;
+}
+.Router_content {
+    z-index: 1;
+    display: inline-block;
+    height: 100%;
+    position: fixed;
+    margin-left: 250px;
+    overflow: hidden;
+    background-color: white;
+}
+.no-drag {
+    -ms-user-select: none; 
+    -moz-user-select: -moz-none; 
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+    user-select:none;
+}

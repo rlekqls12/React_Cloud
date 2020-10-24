@@ -1,0 +1,73 @@
+/*가름선*/
+.SideBar_splitBar {
+    width: 3px;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 99%;
+    background-color: #dadada;
+}
+/*유저 정보*/
+.SideBar_userInfo {
+    margin: 10%;
+}
+.SideBar_userInfo_logout {
+    margin-top: 3px;
+    font-size: 12px;
+    cursor: pointer;
+    float: right;
+}
+/*남은 용량*/
+.SideBar_remainSize {
+    margin: 10%;
+}
+.SideBar_remainSize_back {
+    width: 100%;
+    height: 3px;
+    margin-top: 5px;
+    background-color: white;
+}
+.SideBar_remainSize_use {
+    width: 0%;
+    height: 3px;
+    margin-top: 5px;
+    background-color: red;
+}
+.SideBar_remainSize_percent {
+    font-size: 12px;
+    text-align: center;
+}
+/*폴더 트리*/
+.SideBar_folderTree {
+    border: 2px solid #cacaca;
+    padding: 5px 8px 5px 8px;
+    margin: 70px 5% 0 5%;
+    background-color: #eaeaea;
+}
+.SideBar_folderTree_toggle {
+    float: right;
+    margin: 3px 3px 0 0;
+    cursor: pointer;
+}
+.SideBar_folderTree_show {
+    padding: 10px 8px 5px 8px;
+    overflow: hidden;
+}
+.SideBar_folderTree_list {
+    overflow: scroll;
+    -webkit-transition: height 0.2s ease-in-out;
+    -moz-transition: height 0.2s ease-in-out;
+    transition: height 0.2s ease-in-out;
+}
+.SideBar_folderTree_show_folder_folded {
+    cursor: pointer;
+}
+.SideBar_folderTree_show_folder {
+    /* width: 100%; */
+    cursor: pointer;
+
+    white-space: nowrap;
+}
+.SideBar_folderTree_show_text {
+    margin-left: 5px;
+}
