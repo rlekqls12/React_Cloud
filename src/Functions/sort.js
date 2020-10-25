@@ -19,7 +19,7 @@ const doListSort = (contents, sortType) => {
 
 const doSort = (a, b, sortType) => {
     // 정렬
-    let attrA = setSortAttributes(a), 
+    const attrA = setSortAttributes(a), 
         attrB = setSortAttributes(b);
     let compA, compB;
     let tempA, tempB, tempLength;

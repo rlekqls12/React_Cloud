@@ -17,7 +17,7 @@ import {
 import {
     MAIN_STATE_TYPES
 } from 'src/Redux/constants';
-import { SideBar, Login, Register, LoadingPage, UploadInfo, ServerError } from './';
+import { LoadingPage, Login, Register, SideBar, ContentsMain, UploadInfo, ServerError } from './';
 import 'src/Resources/CSS/Base.css';
 import 'src/Resources/CSS/Icon.css';
 import 'src/Resources/CSS/Router.css';
@@ -173,6 +173,9 @@ class Router extends Component {
                         {NOT_LOGINED && <Route path="/path" component={Login}/>}
 
                         {/*메인*/}
+                        {LOGINED && <Route path="/" exact={true} component={ContentsMain}/>}
+                        {LOGINED && <Route path="/path" exact={true} component={ContentsMain}/>}
+                        {LOGINED && <Route path="/path/:path" exact={true} component={ContentsMain}/>}
 
                         {/*에러들*/}
                         <Route component={ServerError}/>

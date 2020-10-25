@@ -17,42 +17,81 @@ const RESULT_CODE = {
 
 };
 
+/**
+ * 서버가 없어서 더미데이터 추가
+ */
+
+/**
+ * 로그인 상태인지 확인
+ * @returns {boolean} true / false
+ */
 const checkLogin = async () => {
-    let res = await request.get('/login')
+    return true;
+    // eslint-disable-next-line
+    const res = await request.get('/login')
         .catch(err => {
             return false;
         });
-
+    // eslint-disable-next-line
     if (res === undefined || res.status !== 200 || res.data === 'Error') return false;
     
-    let resData = res.data.toLowerCase();
+    const resData = res.data.toLowerCase();
     if (resData === 'already login') {
         return true
     };
-
+    // eslint-disable-next-line
     return false;
 }
 
+/**
+ * 사용자 정보 가져오기
+ * @returns {object|string} 
+ * {
+ *      data: {
+ *          id: 아이디,
+ *          useStorage: 저장소 사용량,
+ *          fullStorage: 저장소 용량
+ *      }
+ * }
+ * or ACCOUNT_RESULT_CODE
+ */
 const getAccountInfo = async () => {
-    let res = await request.get('/')
+    return {
+        data: {
+            id: 'tester',
+            useStorage: 512000000000,
+            fullStorage: 1024000000000
+        }
+    };
+    // eslint-disable-next-line
+    const res = await request.get('/')
         .catch(err => {
             return RESULT_CODE.CANT_GET_ACCOUNT_INFO;
         });
 
+    // eslint-disable-next-line
     if (res === undefined || res.status !== 200 || res.data === 'Error') return RESULT_CODE.CANT_GET_ACCOUNT_INFO;
 
     return res;
 }
 
+/**
+ * 로그인
+ * @param {FormData} param id, password(SHA256)
+ * @returns {String} ACCOUNT_RESULT_CODE
+ */
 const postLogin = async (param) => {
-    let res = await request.post('/login', param)
+    return RESULT_CODE.LOGIN_COMPLETE;
+    // eslint-disable-next-line
+    const res = await request.post('/login', param)
         .catch(err => {
             return RESULT_CODE.CANT_CONNECT_DB;
         });
 
+    // eslint-disable-next-line
     if (res === undefined || res.status !== 200 || res.data === 'Error') return RESULT_CODE.CANT_CONNECT_DB;
     
-    let resData = res.data.toLowerCase();
+    const resData = res.data.toLowerCase();
     switch (resData) {
         default:
         case 'login failed': return RESULT_CODE.LOGIN_FAILED;
@@ -63,15 +102,23 @@ const postLogin = async (param) => {
     }
 }
 
+/**
+ * 회원가입
+ * @param {FormData} param id, password(SHA256), verifiedKey
+ * @returns {String} ACCOUNT_RESULT_CODE
+ */
 const postRegister = async (param) => {
-    let res = await request.post('/register', param)
+    return RESULT_CODE.REGIST_COMPLETE;
+    // eslint-disable-next-line
+    const res = await request.post('/register', param)
         .catch(err => {
             return RESULT_CODE.CANT_CONNECT_DB;
         });
 
+    // eslint-disable-next-line
     if (res === undefined || res.status !== 200 || res.data === 'Error') return RESULT_CODE.CANT_CONNECT_DB;
     
-    let resData = res.data.toLowerCase();
+    const resData = res.data.toLowerCase();
     switch (resData) {
         default:
         case 'can\'t connect db': return RESULT_CODE.CANT_CONNECT_DB;
@@ -83,15 +130,22 @@ const postRegister = async (param) => {
     }
 }
 
+/**
+ * 로그아웃
+ * @returns {String} ACCOUNT_RESULT_CODE
+ */
 const doLogout = async () => {
-    let res = await request.get("/logout")
+    return RESULT_CODE.LOGOUT_COMPLETE;
+    // eslint-disable-next-line
+    const res = await request.get("/logout")
             .catch(err => {
                 return RESULT_CODE.LOGOUT_FAILED
             });
 
+    // eslint-disable-next-line
     if (res === undefined || res.status !== 200 || res.data === 'Error') return RESULT_CODE.LOGOUT_FAILED;
 
-    let resData = res.data.toLowerCase();
+    const resData = res.data.toLowerCase();
     switch (resData) {
         default: return RESULT_CODE.LOGOUT_FAILED;
         case 'already logout': return RESULT_CODE.ALREADY_LOGOUT;

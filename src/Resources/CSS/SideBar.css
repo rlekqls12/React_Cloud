@@ -71,3 +71,7 @@
 .SideBar_folderTree_show_text {
     margin-left: 5px;
 }
+.SideBar_Link {
+    color: inherit;
+    text-decoration: inherit;
+}

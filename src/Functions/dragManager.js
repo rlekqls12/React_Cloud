@@ -10,13 +10,13 @@ const DRAG_STATE = {
 }
 
 const DragManager = function() {
-    var eventInit = false;
-    var dragEvents;
-    var listeners = [];
+    const listeners = [];
+    let eventInit = false;
+    let dragEvents;
 
-    var dragCounter = 0;
-    var state = DRAG_STATE.NONE;
-    var dataTransfer;
+    let dragCounter = 0;
+    let state = DRAG_STATE.NONE;
+    let dataTransfer;
 
     const preventDragEvent = (event) => {
         event.preventDefault();
@@ -40,9 +40,9 @@ const DragManager = function() {
     const handleDragIn = (event) => {
         preventDragEvent(event);
 
-        dragCounter++;
-        let items = event.dataTransfer.items;
+        const items = event.dataTransfer.items;
         if (items && items.length > 0) {
+            dragCounter++;
             state = DRAG_STATE.DRAGGING;
             dataTransfer = event.dataTransfer;
             sendDragState();
@@ -53,7 +53,7 @@ const DragManager = function() {
     const handleDragOut = (event) => {
         preventDragEvent(event);
 
-        dragCounter--;
+        if (dragCounter > 0) dragCounter--;
         if (dragCounter === 0) {
             state = DRAG_STATE.NONE;
             dataTransfer = undefined;
@@ -70,7 +70,7 @@ const DragManager = function() {
             return;
         }
 
-        let files = event.dataTransfer.files;
+        const files = event.dataTransfer.files;
         if (files && files.length > 0) {
             state = DRAG_STATE.DROP;
             dataTransfer = event.dataTransfer;
@@ -122,7 +122,7 @@ const DragManager = function() {
          * @param {function} (state: string, dataTransfer: object) => {}
          */
         removeDragStateListener: (listener) => {
-            let listenerIndex = listeners.indexOf(listener);
+            const listenerIndex = listeners.indexOf(listener);
             if (listenerIndex !== -1) listeners.splice(listenerIndex, 1);
         }
     };

@@ -1,7 +1,9 @@
 import { TYPE_FOLDER_TREE } from '../actionTypes';
 
+// 사이드바에 띄워질 폴더 트리 정보
+
 const initialState = {
-    tree: {undefined},
+    tree: undefined,
     opened: true
 };
 

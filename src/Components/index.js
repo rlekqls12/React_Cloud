@@ -20,13 +20,18 @@ export const SideBar = Loadable({
     loading: Loading
 });
 
-export const ServerError = Loadable({
-    loader: () => import('./ServerError.js'),
+export const ContentsMain = Loadable({
+    loader: () => import('./Contents/ContentsMain.js'),
     loading: Loading
 });
 
 export const UploadInfo = Loadable({
     loader: () => import('./UploadInfo.js'),
+    loading: Loading
+});
+
+export const ServerError = Loadable({
+    loader: () => import('./ServerError.js'),
     loading: Loading
 });
 

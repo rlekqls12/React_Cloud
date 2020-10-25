@@ -1,6 +1,8 @@
 import { TYPE_MAIN_STATE } from '../actionTypes';
 import { MAIN_STATE_TYPES } from '../constants';
 
+// 메인 컴포넌트 변경시 사용
+
 const initialState = {
     state: MAIN_STATE_TYPES.NONE,
     errorCode: 404

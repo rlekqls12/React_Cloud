@@ -17,6 +17,7 @@ class Login extends Component {
         waitLogin: false
     }
     
+    // 회원가입 버튼에 마우스 hover시 회원가입 페이지 프리로드
     preloadRegister = () => {
         Register.preload();
     }
@@ -68,18 +69,18 @@ class Login extends Component {
             return;
         }
 
-        // state 바로 적용
+        // 다중 처리 방지를 위해 state 바로 적용
         this.setState((state, props) => ({ 
             loginBtnEnabled: false,
             loginState: TEXTS.WAIT_LOGIN,
             waitLogin: true
         }));
 
-        let formData = new FormData();
+        const formData = new FormData();
         formData.append('id', loginId);
         formData.append('password', SHA256(loginPw));
 
-        let result = await postLogin(formData);
+        const result = await postLogin(formData);
         let resultText;
 
         switch (result) {
@@ -103,6 +104,7 @@ class Login extends Component {
         });
     }
 
+    // 아이디, 비밀번호 입력칸에서 엔터 누를시 로그인 처리
     checkPushEnter = (event) => {
         if (event.keyCode === 13) {
             this.executeLogin();

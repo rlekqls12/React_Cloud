@@ -1,0 +1,189 @@
+/*전체*/
+.ContentsMain {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+
+/*경로 표시*/
+.ContentsMain_path {
+    display: inline-block;
+    width: 100%;
+    padding: 3px;
+    border-bottom: 1px solid #9a9a9a;
+    background-color: #eaeaea;
+    cursor: default;
+}
+.ContentsMain_pathFinder {
+    cursor: pointer;
+}
+
+
+/*컨텐츠*/
+.ContentsMain_list {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+}
+.ContentsMain_list_wrapper {
+    z-index: 1;
+    position: relative;
+}
+.ContentsMain_list_content {
+    padding: 0px 5px 0px 5px;
+    float: left;
+    text-align: center;
+    background-color: transparent;
+}
+.ContentsMain_list_content:hover {
+    text-align: center;
+    background-color: #eeeeee;
+}
+.ContentsMain_list_content_icon {
+    font-size: 64px;
+}
+.ContentsMain_list_content_name {
+    display: -webkit-box;
+    width: 100%;
+    line-height: 1.2;
+    height: 2.4em;
+    
+    font-size: 14px;
+    word-break: keep-all;
+    word-wrap: break-word;
+
+    /* 두 줄 이상 ... 처리 */
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+/*배경*/
+.ContentsMain_list_background {
+    z-index: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+/*컨텍스트 메뉴*/
+.ContentsMain_contextMenu {
+    position: absolute;
+    width: 150px;
+    padding: 10px 0 10px 0;
+    background-color: dimgray;
+}
+.ContentsMain_contextMenu_item {
+    display: inline-block;
+    width: 100%;
+    color: white;
+    cursor: default;
+    background: dimgray;
+}
+.ContentsMain_contextMenu_item:hover {
+    background: darkgray;
+}
+.ContentsMain_contextMenu_item_text {
+    display: inline-block;
+    margin: 3px 0 3px 15px;
+    width: 80%;
+    color: white;
+    cursor: default;
+}
+.ContentsMain_contextMenu_hr {
+    margin: 6px 8px 6px 8px;
+    border: solid 0.5px white;
+    opacity: 0.2;
+}
+
+
+/*디테일 테이블*/
+.ContentsMain_detail {
+    position: fixed;
+}
+.ContentsMain_detail_background {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    opacity: 0.25;
+    background: black
+}
+.ContentsMain_detail_inner {
+    position: fixed;
+    border: 1px solid black;
+    background: white;
+}
+.ContentsMain_detail_inner_head {
+    margin: 12px 0px 4px 12px;
+    font-weight: 700;
+}
+.ContentsMain_detail_inner_close {
+    float: right;
+    margin-right: 12px;
+    cursor: pointer;
+}
+.ContentsMain_detail_inner_body_createFolder {
+    margin: 4px 0px 16px 0px;
+    width: 100%;
+    text-align: center;
+}
+.ContentsMain_detail_inner_body_folderDetail {
+    padding: 4px 16px 8px 16px;
+    font-size: 14px;
+}
+.ContentsMain_detail_inner_hr {
+    margin: 8px;
+    border: 0.75px solid #cfcfcf;
+}
+.ContentsMain_detail_inner_td_head {
+    font-weight: bold;
+    padding: 0px 72px 5px 0px;
+}
+.ContentsMain_detail_inner_td_oneLineText {
+    display: inline-block;
+    width: 225px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+.ContentsMain_detail_inner_warningInfo {
+    -webkit-transition: max-height 1s ease-in;
+    -moz-transition: max-height 1s ease-in;
+    transition: max-height 1s ease-in;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    font-size: 12px;
+    font-weight: 700;
+    color: #f77;
+}
+.ContentsMain_detail_inner_okay {
+    margin-top: 12px;
+    width: 100%;
+    text-align: center;
+}
+.ContentsMain_detail_inner_okayBtn {
+    border: 0.5px solid rgb(169, 169, 169);
+    padding: 5px 12px 7px 12px;
+    cursor: pointer;
+    font-weight: 700;
+    background-color: white;
+}
+.ContentsMain_detail_inner_loading { 
+    cursor: wait;
+}
+.ContentsMain_detail_inner_upload_table {
+    width: 100%;
+    text-align: center;
+}
+.ContentsMain_detail_inner_upload_table thead {
+    display: table;
+    float: left;
+    width: 100%;
+}
+.ContentsMain_detail_inner_upload_table tbody {
+    float: left;
+    width: 100%;
+}

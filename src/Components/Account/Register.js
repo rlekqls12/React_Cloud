@@ -20,16 +20,18 @@ class Register extends Component {
     }
 
     componentDidMount = () => {
+        // 로그인 중이라면 메인 페이지로 이동
         checkLogin(() => {
             window.location.href = '/';
         });
     }
 
+    // 입력창 내용 변경시 state에 적용
     onChangeValue = (e) => {
-        let inputName = e.target.name;
+        const inputName = e.target.name;
         let inputText = e.target.value;
 
-        // 특수문자 체크
+        // 특수문자 검사
         if (['registId', 'registKey'].indexOf(inputName) !== -1 && inputText.length > 0 && inputText.match(checkSpecialChars)) {
             inputText = inputText.replace(checkSpecialChars, '');
             
@@ -53,7 +55,7 @@ class Register extends Component {
 
     // 비밀번호 패스워드 속성 적용/해제
     onPasswordShow = (element) => {
-        let classes = element.target.className;
+        const classes = element.target.className;
 
         let inputType;
         if (classes.indexOf('pw1') !== -1) inputType = 'registPwType';
@@ -105,19 +107,19 @@ class Register extends Component {
             return;
         }
 
-        // state 바로 적용
+        // 다중 처리 방지를 위해 state 바로 적용
         this.setState((state, props) => ({ 
             registBtnEnabled: false,
             registState: TEXTS.WAIT_REGISTER,
             waitRegister: true
         }));
 
-        let formData = new FormData();
+        const formData = new FormData();
         formData.append('id', registId);
         formData.append('password', SHA256(registPw));
         formData.append('verifiedKey', registKey);
 
-        let result = await postRegister(formData);
+        const result = await postRegister(formData);
         let resultText;
 
         switch (result) {

@@ -25,12 +25,9 @@ const mapStateToProps = state => ({
 class SideBar extends Component {
     state = {
         userStorageInfo: {
-            "useStorage": 0,
-            "fullStorage": 0,
-            "restStorage": 0,
-            "useStorageText": 'KB',
-            "fullStorageText": 'KB',
-            "restStorageText": 'KB',
+            "useStorage": '0 KB',
+            "fullStorage": '0 KB',
+            "restStorage": '0 KB',
             "usage": 0
         }
     }
@@ -47,9 +44,9 @@ class SideBar extends Component {
 
         if (accountInfo.fullStorage !== 0) {
             // 용량 크기를 적당한 크기로 절삭
-            let useStorage = getSizeText(accountInfo.useStorage);
-            let fullStorage = getSizeText(accountInfo.fullStorage);
-            let restStorage = getSizeText(accountInfo.fullStorage - accountInfo.useStorage);
+            const useStorage = getSizeText(accountInfo.useStorage);
+            const fullStorage = getSizeText(accountInfo.fullStorage);
+            const restStorage = getSizeText(accountInfo.fullStorage - accountInfo.useStorage);
 
             // 사용량 계산
             let usage = (accountInfo.useStorage / accountInfo.fullStorage) * 100;
@@ -62,13 +59,10 @@ class SideBar extends Component {
             restStorage[0] = decimalFixed(restStorage[0], 4);
 
             // usage를 제외한 나머지 값 적용
-            let tempUserInfo = {
-                "useStorage": useStorage[0],
-                "fullStorage": fullStorage[0],
-                "restStorage": restStorage[0],
-                "useStorageText": useStorage[1],
-                "fullStorageText": fullStorage[1],
-                "restStorageText": restStorage[1],
+            const tempUserInfo = {
+                "useStorage": useStorage.join(' '),
+                "fullStorage": fullStorage.join(' '),
+                "restStorage": restStorage.join(' '),
                 "usage": 0
             };
             this.setState({
@@ -85,6 +79,7 @@ class SideBar extends Component {
         }
     }
 
+    // 폴더 영역 펼침 / 접음
     onFolderTreeToggle = () => {
         this.props.updateFolderTree({
             opened: !this.props.folderTree.opened
@@ -93,7 +88,7 @@ class SideBar extends Component {
 
     onLogout = async () => {
         // 로그아웃
-        let logout = await doLogout();
+        const logout = await doLogout();
         
         switch(logout) {
             default:
@@ -115,10 +110,6 @@ class SideBar extends Component {
     render() {
         const { userStorageInfo } = this.state;
         const { accountInfo, folderTree } = this.props;
-
-        const useStorage = `${userStorageInfo.useStorage || 0} ${userStorageInfo.useStorageText || "MB"}`;
-        const fullStorage = `${userStorageInfo.fullStorage || 0} ${userStorageInfo.fullStorageText || "MB"}`;
-        const restStorage = `${userStorageInfo.restStorage || 0} ${userStorageInfo.restStorageText || "MB"}`;
         const folderTreeOpened = folderTree.opened;
 
         return (
@@ -132,7 +123,7 @@ class SideBar extends Component {
                 </div>
                 {/*남은 용량*/}
                 <div className="SideBar_remainSize">
-                    {useStorage} / {fullStorage}
+                    {userStorageInfo.useStorage} / {userStorageInfo.fullStorage}
                     <Motion defaultStyle={{width: 0}} style={{width: spring(userStorageInfo.usage)}}>
                         {
                             value => 
@@ -144,7 +135,7 @@ class SideBar extends Component {
                             </div>
                         }
                     </Motion>
-                    {TEXTS.REST_STORAGE} : {restStorage}
+                    {TEXTS.REST_STORAGE} : {userStorageInfo.restStorage}
                 </div>
                 {/*폴더 트리*/}
                 <div className="SideBar_folderTree">
